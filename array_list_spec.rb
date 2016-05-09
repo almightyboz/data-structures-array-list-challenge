@@ -45,4 +45,16 @@ describe ArrayList do
     expect(test_list.length).to eq(6)
   end
 
+  it "raises an IndexError if there is no element at a specified index" do
+    expect{ test_list.insert(1, "data") }.to raise_error(IndexError)
+  end
+
+  it "inserts a value at the specified index if it's replacing an existing value" do
+    test_list.set(0, "data")
+    test_list.insert(0, "frog")
+    expect(test_list.get(0)).to eq("frog")
+  end
+
+
+
 end

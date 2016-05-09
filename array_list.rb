@@ -31,6 +31,16 @@ class ArrayList
     @size
   end
 
+# do I need to add a case if the index is not contained within the size array? (e.g., if it fails check_index!)
+# if so, I just need to use set
+# do I need to return anything?
+  def insert(index, element)
+    check_index!(index)
+    raise IndexError unless @list[index]
+    @list[index] = element
+    # @list[index]
+  end
+
 end
 
 # puts "===================="
