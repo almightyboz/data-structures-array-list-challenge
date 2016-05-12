@@ -4,36 +4,35 @@ class ArrayList
 
   attr_reader :capacity, :size
 
-  def initialize(capacity)
+  def initialize(capacity=8)
     @capacity = capacity
     @size = 0
     @list = FixedArray.new(@capacity)
   end
 
-  def check_index!(index)
-    raise IndexError if index > @capacity
-  end
-
-# if true, add a thing
-  def has_vacancy?
-    @capacity > @size
+  def populate_array(counter=0)
+    new_array = FixedArray.new(@capacity)
+    until counter > @size
+      temporary_item = @list.get(counter)
+      new_array.set(counter, temporary_item)
+      counter += 1
+    end
+    @capacity += 1
+    @list = new_array
   end
 
   def add(element)
-    if has_vacancy?
+    if @capacity > @size
       @list.set(@size, element)
     else
-      @capacity += 1
-      new_fixed_array = FixedArray.new(@capacity)
-      new_fixed_array.set(@size, element)
-      @list = new_fixed_array
+      populate_array()
     end
+    @list.set(@size, element)
     @size += 1
     return element
   end
 
   def get(index)
-    check_index!(index)
     if @list.get(index)
       return @list.get(index)
     else
@@ -41,9 +40,7 @@ class ArrayList
     end
   end
 
-  # can you change an element to nil?
   def set(index, element)
-    # check_index!(index)
     if @list.get(index)
       @list.set(index, element)
       return element
@@ -64,15 +61,29 @@ class ArrayList
     return @size
   end
 
-# do I need to add a case if the index is not contained within the size array? (e.g., if it fails check_index!)
-# if so, I just need to use set
-# do I need to return anything?
   def insert(index, element)
-    check_index!(index)
-    raise IndexError unless @list[index]
-    @list[index] = element
-    # @list[index]
+    if @list.get(index)
+
+    else
+      raise IndexError
+    end
   end
+
 end
 
+# list = ArrayList.new(5)
+# list.add("alfa")
+# list.add("bravo")
+# list.add("charlie")
+# list.add("delta")
+# new_list = list.populate_array(7)
+# puts new_list.get(0)
+# puts new_list.get(6)
+
 # puts "===================="
+# IF there is a element at index x
+#   create a counter variable equal to x
+#   if counter variable is less than capacity
+# => get the element at index x and save it as a variable
+  # set it as the element at index x + 1
+  #

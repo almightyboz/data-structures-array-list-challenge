@@ -49,9 +49,9 @@ describe ArrayList do
     expect(test_list.length).to eq(1)
   end
 
-  # it "raises an IndexError if there is no element at a specified index" do
-  #   expect{ test_list.insert(1, "data") }.to raise_error(IndexError)
-  # end
+  it "raises an IndexError if there is no element at a specified index" do
+    expect{ test_list.insert(1, "data") }.to raise_error(IndexError)
+  end
 
   # it "inserts a value at the specified index if it's replacing an existing value" do
   #   test_list.set(0, "data")
