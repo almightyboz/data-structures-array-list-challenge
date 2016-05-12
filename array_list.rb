@@ -10,8 +10,8 @@ class ArrayList
     @list = FixedArray.new(@capacity)
   end
 
-  def populate_array(counter=0)
-    new_array = FixedArray.new(@capacity)
+  def grow(counter=0)
+    new_array = FixedArray.new(@capacity + 1)
     until counter > @size
       temporary_item = @list.get(counter)
       new_array.set(counter, temporary_item)
@@ -25,7 +25,7 @@ class ArrayList
     if @capacity > @size
       @list.set(@size, element)
     else
-      populate_array()
+      grow()
     end
     @list.set(@size, element)
     @size += 1
@@ -63,27 +63,17 @@ class ArrayList
 
   def insert(index, element)
     if @list.get(index)
-
+      grow()
+      counter = index
+      until counter > @capacity
+        temporary_item = @list.get(counter)
+        @list.set(counter, element)
+        counter += 1
+        element = temporary_item
+      end
     else
       raise IndexError
     end
   end
 
 end
-
-# list = ArrayList.new(5)
-# list.add("alfa")
-# list.add("bravo")
-# list.add("charlie")
-# list.add("delta")
-# new_list = list.populate_array(7)
-# puts new_list.get(0)
-# puts new_list.get(6)
-
-# puts "===================="
-# IF there is a element at index x
-#   create a counter variable equal to x
-#   if counter variable is less than capacity
-# => get the element at index x and save it as a variable
-  # set it as the element at index x + 1
-  #
