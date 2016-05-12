@@ -58,7 +58,6 @@ describe ArrayList do
     test_list.insert(0, "frog")
     expect(test_list.get(0)).to eq("frog")
     expect(test_list.get(1)).to eq("data")
-
   end
 
 end

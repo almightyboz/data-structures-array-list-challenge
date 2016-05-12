@@ -13,11 +13,11 @@ Locating the desired item in a list by linear search requres a number of operati
 
 
 * new - O(1)
-* add - O(4)  => (1 if bumping @size isn't an operation) Otherwise, one operation more than set
-* get - O(2)
-* set - O(3)
-* size - O(1)
-* insert - O(3)
+* add - O(1) if not at capacity. Otherwise, O(n)
+* get - O(1)
+* set - O(1)
+* length - O(1)
+* insert - O(2n)
 
 ###QUESTIONS###
 What is an operation in big O notation? Is bumping the size instance variable an operation?
