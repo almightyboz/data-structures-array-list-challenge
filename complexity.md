@@ -1,5 +1,12 @@
 ##Big O Notation of operations##
 
+GENERAL NOTES
+wrap code around a fixed array instance
+capacity - potential things it can hold
+size - how many things it is currently holding
+if the size(n) is more than the capacity, it creates a new fixed array of size n + 1 and adds the new thing to index n
+
+
 Misc Notes:
 A search data structure is any data structure that allows the efficient retrieval of specific items from a set of items, like a record from a database.
 Locating the desired item in a list by linear search requres a number of operations proportional to the number n of items.
